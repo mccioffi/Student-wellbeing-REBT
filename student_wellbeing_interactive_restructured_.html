@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Wellbeing: Thinking Your Way to Success</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .intro-hook {
+            background: #fef3f2;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #dc2626;
+        }
+        
+        .intro-hook h2 {
+            color: #dc2626;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+        
+        .intro-hook p {
+            font-size: 1.05em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .thought-examples {
+            display: grid;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .thought-bubble {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #dc2626;
+            font-style: italic;
+            color: #4a5568;
+        }
+        
+        .good-news {
+            background: #ecfdf5;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #10b981;
+        }
+        
+        .good-news h3 {
+            color: #065f46;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .good-news p {
+            color: #047857;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .section-header:hover {
+            background: linear-gradient(135deg, #5568d3 0%, #653a8b 100%);
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-number {
+            background: rgba(255,255,255,0.3);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+        
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        
+        .section-content.active {
+            max-height: 3500px;
+        }
+        
+        .section-inner {
+            padding: 30px 25px;
+        }
+        
+        .problem-first {
+            background: #fef3f2;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #dc2626;
+            margin-bottom: 25px;
+        }
+        
+        .problem-first h4 {
+            color: #991b1b;
+            margin-bottom: 12px;
+            font-size: 1.15em;
+        }
+        
+        .problem-first p {
+            color: #7f1d1d;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .arrow-down {
+            text-align: center;
+            font-size: 2em;
+            color: #10b981;
+            margin: 20px 0;
+        }
+        
+        .solution-box {
+            background: #f0fff4;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #10b981;
+            margin-bottom: 20px;
+        }
+        
+        .solution-box h4 {
+            color: #065f46;
+            margin-bottom: 12px;
+            font-size: 1.15em;
+        }
+        
+        .solution-box p {
+            color: #047857;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        
+        .why-matters {
+            background: #fffbeb;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+            margin: 20px 0;
+        }
+        
+        .why-matters h4 {
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .why-matters p {
+            color: #78350f;
+            line-height: 1.6;
+        }
+        
+        .student-example {
+            background: #ecfdf5;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #10b981;
+            margin: 20px 0;
+        }
+        
+        .student-example h4 {
+            color: #065f46;
+            margin-bottom: 10px;
+            font-size: 1em;
+            font-weight: 600;
+        }
+        
+        .student-example p {
+            color: #047857;
+            line-height: 1.6;
+            font-style: italic;
+        }
+        
+        .exercise-box {
+            background: #f0f9ff;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #3b82f6;
+            margin: 25px 0;
+        }
+        
+        .exercise-box h4 {
+            color: #1e40af;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .exercise-steps {
+            margin: 15px 0;
+        }
+        
+        .exercise-steps li {
+            margin: 10px 0 10px 20px;
+            color: #1e3a8a;
+        }
+        
+        .big-i-container {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .big-i-visual {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #3b82f6;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .big-i-visual p {
+            text-align: center;
+            color: #1e40af;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .little-i-list {
+            font-size: 0.9em;
+            color: #1e3a8a;
+            line-height: 1.8;
+        }
+        
+        .key-reminders {
+            background: #faf5ff;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .key-reminders h3 {
+            color: #6b21a8;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+        
+        .reminder-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .checkmark {
+            color: #10b981;
+            font-size: 1.5em;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .reminder-item p {
+            color: #4c1d95;
+            line-height: 1.5;
+        }
+        
+        .try-now {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .try-now h4 {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+        
+        .try-now p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+            font-style: italic;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        ul li {
+            margin: 8px 0;
+            color: #4a5568;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.6em;
+            }
+            
+            .header p {
+                font-size: 1em;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            .big-i-container {
+                flex-direction: column;
+            }
+        }
+        
+        /* Quiz option hover effects */
+        label:has(input[type="radio"]):hover {
+            background: #fecaca !important;
+            transform: translateX(5px);
+        }
+        
+        label:has(input[type="radio"]:checked) {
+            background: #dc2626 !important;
+            color: white;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 Thinking Your Way Towards Success & Wellbeing</h1>
+            <p>Do these thoughts sound familiar? You're not alone—and there's a way to change them.</p>
+        </div>
+        
+        <div class="content">
+            <!-- Quick Self-Assessment Quiz -->
+            <div id="quiz-container" style="background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%); padding: 30px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <h2 style="color: #92400e; margin-bottom: 20px; text-align: center; font-size: 1.6em;">🎯 Quick Check: Which Thinking Pattern Affects You Most?</h2>
+                <p style="color: #78350f; margin-bottom: 25px; text-align: center; font-size: 1.05em;">Answer these 3 quick questions to find out which strategy you need most right now (takes 30 seconds)</p>
+                
+                <div id="quiz-questions">
+                    <div style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                        <p style="color: #333; font-weight: 600; margin-bottom: 15px;">1. When you have an upcoming exam or deadline, which thought is most common for you?</p>
+                        <label style="display: block; padding: 12px; margin: 8px 0; background: #fef3f2; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                            <input type="radio" name="q1" value="flexible" style="margin-right: 10px;">
+                            "I MUST get a top grade or it will be terrible"
+                        </label>
+                        <label style="display: block; padding: 12px; margin: 8px 0; background: #fef3f2; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                            <input type="radio" name="q1" value="failure" style="margin-right: 10px;">
+                            "If I fail this, I'm a complete failure"
+                        </label>
+                        <label style="display: block; padding: 12px; margin: 8px 0; background: #fef3f2; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                            <input type="radio" name="q1" value="worth" style="margin-right: 10px;">
+                            "My entire worth depends on how well I do"
+                        </label>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                        <p style="color: #333; font-weight: 600; margin-bottom: 15px;">2. When something doesn't go as planned (bad grade, rejected application), how do you typically react?</p>
+                        <label style="display: block; padding: 12px; margin: 8px 0; background: #fef3f2; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                            <input type="radio" name="q2" value="flexible" style="margin-right: 10px;">
+                            I feel extreme pressure and panic that I "should have" done better
+                        </label>
+                        <label style="display: block; padding: 12px; margin: 8px 0; background: #fef3f2; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                            <input type="radio" name="q2" value="failure" style="margin-right: 10px;">
+                            I see it as proof that I'm not good enough and spiral into negative thoughts
+                        </label>
+                        <label style="display: block; padding: 12px; margin: 8px 0; background: #fef3f2; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                            <input type="radio" name="q2" value="worth" style="margin-right: 10px;">
+                            I feel like my identity and value are shaken
+                        </label>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                        <p style="color: #333; font-weight: 600; margin-bottom: 15px;">3. Which statement resonates most with how you feel about yourself?</p>
+                        <label style="display: block; padding: 12px; margin: 8px 0; background: #fef3f2; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                            <input type="radio" name="q3" value="flexible" style="margin-right: 10px;">
+                            I put so much pressure on myself with rigid expectations
+                        </label>
+                        <label style="display: block; padding: 12px; margin: 8px 0; background: #fef3f2; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                            <input type="radio" name="q3" value="failure" style="margin-right: 10px;">
+                            I'm terrified of failing and see setbacks as catastrophic
+                        </label>
+                        <label style="display: block; padding: 12px; margin: 8px 0; background: #fef3f2; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                            <input type="radio" name="q3" value="worth" style="margin-right: 10px;">
+                            My self-worth feels completely tied to my achievements
+                        </label>
+                    </div>
+                    
+                    <button onclick="calculateQuizResult()" style="display: block; width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 10px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);">
+                        See My Result →
+                    </button>
+                </div>
+                
+                <div id="quiz-result" style="display: none;">
+                    <div style="background: white; padding: 25px; border-radius: 12px; border-left: 5px solid #10b981;">
+                        <h3 style="color: #065f46; margin-bottom: 15px; font-size: 1.3em;">✨ Your Result</h3>
+                        <p id="result-text" style="color: #047857; line-height: 1.6; margin-bottom: 15px; font-size: 1.05em;"></p>
+                        <button onclick="scrollToSection()" id="scroll-button" style="padding: 12px 25px; background: #10b981; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+                            Take Me There →
+                        </button>
+                        <button onclick="resetQuiz()" style="margin-left: 10px; padding: 12px 25px; background: #6b7280; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+                            Retake Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="intro-hook">
+                <h2>Do You Ever Think Like This?</h2>
+                <div class="thought-examples">
+                    <div class="thought-bubble">
+                        💭 "I MUST get a First on this essay. Anything less would be a disaster."
+                    </div>
+                    <div class="thought-bubble">
+                        💭 "If I fail this exam, it's the end of the world and it proves I'm a failure."
+                    </div>
+                    <div class="thought-bubble">
+                        💭 "My entire worth is based on my grades and achievements."
+                    </div>
+                    <div class="thought-bubble">
+                        💭 "I absolutely must impress everyone with my presentation or I'll be humiliated."
+                    </div>
+                </div>
+                <p style="margin-top: 20px; font-weight: 600;">If these thoughts feel familiar, you're not alone. Many students experience these patterns of thinking—and they can seriously impact your wellbeing and performance.</p>
+            </div>
+            
+            <div class="good-news">
+                <h3>✨ Here's the Good News</h3>
+                <p>Research and clinical practice have shown that our attitudes and beliefs shape our experiences. While we can't always change our circumstances, we <strong>can</strong> change the way we think. These unhelpful thinking patterns aren't permanent—you can learn to replace them with more helpful, realistic alternatives that actually improve both your wellbeing and your performance.</p>
+                <p style="margin-top: 15px; font-weight: 600;">Click on each strategy below to discover how to transform these thoughts.</p>
+            </div>
+            
+            <!-- Section 1: Flexible Thinking -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(1)">
+                    <div class="section-title">
+                        <span class="section-number">1</span>
+                        <span>From "I MUST" to "I'd Like To": Flexible Thinking</span>
+                    </div>
+                    <span class="toggle-icon" id="icon1">+</span>
+                </div>
+                <div class="section-content" id="content1">
+                    <div class="section-inner">
+                        <div class="problem-first">
+                            <h4>❌ The Problem: Rigid "Must" Thinking</h4>
+                            <p>"I must perform well. I absolutely must get good grades."</p>
+                            <p style="margin-top: 10px; font-style: normal; color: #991b1b;">When you tell yourself you MUST succeed, you create unnecessary pressure. This rigid thinking generates anxiety, which actually makes it harder to perform well. You end up in a vicious cycle: pressure → anxiety → worse performance → more pressure.</p>
+                        </div>
+                        
+                        <div class="arrow-down">↓</div>
+                        
+                        <div class="solution-box">
+                            <h4>✓ The Solution: Turn Demands into Strong Desires</h4>
+                            <p>"I would really like to perform well. I will do my best to get that grade, but I accept that it might not happen."</p>
+                        </div>
+                        
+                        <div class="why-matters">
+                            <h4>💡 Why This Works:</h4>
+                            <p>Flexible thinking removes unnecessary pressure and protects your mental health. It doesn't mean you care less—you still care deeply—but you stay realistic. This mindset actually helps you perform better because it reduces anxiety. Ask yourself: Is there a law of the universe that says this must happen? Usually not. There's a strong desire, and you can do your best, but that's as far as we can go.</p>
+                        </div>
+                        
+                        <div class="student-example" style="cursor: pointer; position: relative;" onclick="toggleStory(1)">
+                            <h4>📚 Real Student Example: <span style="color: #10b981;">Click to see the full story →</span></h4>
+                            <div id="story-preview-1">
+                                <p>"I used to tell myself 'I MUST get a First in every essay.' The pressure was overwhelming and I'd panic before deadlines..."</p>
+                            </div>
+                            <div id="story-full-1" style="display: none;">
+                                <p style="margin-bottom: 15px;"><strong>Before:</strong> "I used to tell myself 'I MUST get a First in every essay.' The pressure was overwhelming and I'd panic before deadlines."</p>
+                                <div style="text-align: center; font-size: 2em; color: #10b981; margin: 10px 0;">↓</div>
+                                <p><strong>After:</strong> "Now I say 'I'd really like to get a First, and I'll work hard for it, but a 2:1 is still a great result.' I actually perform better now because I'm less anxious!"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="student-example" style="cursor: pointer; position: relative;" onclick="toggleStory(2)">
+                            <h4>📚 Real Student Example: <span style="color: #10b981;">Click to see the full story →</span></h4>
+                            <div id="story-preview-2">
+                                <p>"Before my final year project presentation, I kept thinking 'I absolutely must impress the panel.' I was so nervous I could barely sleep..."</p>
+                            </div>
+                            <div id="story-full-2" style="display: none;">
+                                <p style="margin-bottom: 15px;"><strong>Before:</strong> "Before my final year project presentation, I kept thinking 'I absolutely must impress the panel.' I was so nervous I could barely sleep."</p>
+                                <div style="text-align: center; font-size: 2em; color: #10b981; margin: 10px 0;">↓</div>
+                                <p><strong>After:</strong> "A friend reminded me to think 'I'd really like to do well, but even if I don't, I've worked hard and learned loads.' That shift made me feel so much calmer, and the presentation went really well."</p>
+                            </div>
+                        </div>
+                        
+                        <div class="try-now">
+                            <h4>✨ Try This Now (2 minutes):</h4>
+                            <p>Think of something stressful coming up (exam, presentation, deadline). Write down:</p>
+                            <ul>
+                                <li>Your "must" statement: "I must..."</li>
+                                <li>Now rewrite it: "I would really like to... and I'll do my best, but I accept it might not happen."</li>
+                            </ul>
+                            <p>Notice how the second version feels different? That's flexible thinking!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section 2: Accept Failure -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(2)">
+                    <div class="section-title">
+                        <span class="section-number">2</span>
+                        <span>Failure Doesn't Define You: Accepting Setbacks</span>
+                    </div>
+                    <span class="toggle-icon" id="icon2">+</span>
+                </div>
+                <div class="section-content" id="content2">
+                    <div class="section-inner">
+                        <div class="problem-first">
+                            <h4>❌ The Problem: Catastrophizing Failure</h4>
+                            <p>"If I fail, it's the end of the world and it means I am a failure."</p>
+                            <p style="margin-top: 10px; font-style: normal; color: #991b1b;">When you see failure as catastrophic and as proof that you're a failure as a person, the fear becomes paralyzing. This fear generates intense anxiety that actually impacts your performance—taking you further away from your goals. You might avoid challenges altogether or give up too easily.</p>
+                        </div>
+                        
+                        <div class="arrow-down">↓</div>
+                        
+                        <div class="solution-box">
+                            <h4>✓ The Solution: Accept Failure as Part of Life</h4>
+                            <p>"Failure is bad but not the end of the world, and it does not mean I am a failure."</p>
+                        </div>
+                        
+                        <div class="why-matters">
+                            <h4>💡 Why This Works:</h4>
+                            <p>Failure is inevitable because we are all fallible human beings. Accepting this as part of life removes the pressure and allows you to focus on doing well without fear. When you do experience setbacks, you can acknowledge they're difficult, but then get back up and work towards your next goal. You learn resilience.</p>
+                        </div>
+                        
+                        <div style="background: #dbeafe; padding: 20px; border-radius: 12px; margin: 20px 0; border-left: 4px solid #3b82f6;">
+                            <h4 style="color: #1e40af; margin-bottom: 10px;">🎯 Remember:</h4>
+                            <p style="color: #1e3a8a; font-weight: 600; font-size: 1.1em;">Just because you fail at something doesn't mean you ARE a failure.</p>
+                            <p style="color: #1e3a8a; margin-top: 10px;">You are a complex human being having a temporary setback, not a permanent failure.</p>
+                        </div>
+                        
+                        <div class="student-example" style="cursor: pointer; position: relative;" onclick="toggleStory(3)">
+                            <h4>📚 Real Student Example: <span style="color: #10b981;">Click to see the full story →</span></h4>
+                            <div id="story-preview-3">
+                                <p>"I failed my first statistics exam and felt like my whole degree was over..."</p>
+                            </div>
+                            <div id="story-full-3" style="display: none;">
+                                <p style="margin-bottom: 15px;"><strong>The Setback:</strong> "I failed my first statistics exam and felt like my whole degree was over."</p>
+                                <div style="text-align: center; font-size: 2em; color: #10b981; margin: 10px 0;">↓</div>
+                                <p><strong>What Changed:</strong> "But then I realized: this is one exam, not my entire identity. I got support, learned from my mistakes, and passed the resit. That failure taught me more than any success had."</p>
+                            </div>
+                        </div>
+                        
+                        <div class="student-example" style="cursor: pointer; position: relative;" onclick="toggleStory(4)">
+                            <h4>📚 Real Student Example: <span style="color: #10b981;">Click to see the full story →</span></h4>
+                            <div id="story-preview-4">
+                                <p>"My group project fell apart because two members stopped contributing. I felt like I'd failed as a team leader..."</p>
+                            </div>
+                            <div id="story-full-4" style="display: none;">
+                                <p style="margin-bottom: 15px;"><strong>The Setback:</strong> "My group project fell apart because two members stopped contributing. I felt like I'd failed as a team leader."</p>
+                                <div style="text-align: center; font-size: 2em; color: #10b981; margin: 10px 0;">↓</div>
+                                <p><strong>What Changed:</strong> "But my tutor helped me see: sometimes things don't work out despite your best efforts. I documented what happened, learned about conflict management, and my individual effort was recognized. That 'failure' actually taught me valuable skills for my future career."</p>
+                            </div>
+                        </div>
+                        
+                        <div class="try-now">
+                            <h4>✨ Try This Now (2 minutes):</h4>
+                            <p>Think of a time when something didn't go as planned:</p>
+                            <ul>
+                                <li>What did you learn from it?</li>
+                                <li>Did it actually end your world, or did life continue?</li>
+                                <li>How might accepting setbacks as normal reduce your anxiety about the next challenge?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section 3: Unconditional Self-Worth -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(3)">
+                    <div class="section-title">
+                        <span class="section-number">3</span>
+                        <span>You're More Than Your Grades: The Big 'I', Little 'i'</span>
+                    </div>
+                    <span class="toggle-icon" id="icon3">+</span>
+                </div>
+                <div class="section-content" id="content3">
+                    <div class="section-inner">
+                        <div class="problem-first">
+                            <h4>❌ The Problem: Self-Worth Based on Achievement</h4>
+                            <p>"My value is based on my achievements."</p>
+                            <p style="margin-top: 10px; font-style: normal; color: #991b1b;">When you identify yourself with only one thing—your grades, your achievements—your self-worth becomes fragile. Two major problems emerge:</p>
+                            <ul style="margin-top: 10px; color: #991b1b; font-style: normal;">
+                                <li>The list of things you need to achieve to feel valuable becomes never-ending</li>
+                                <li>If you don't achieve something, your self-worth plummets, seriously impacting your mental health</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="arrow-down">↓</div>
+                        
+                        <div class="solution-box">
+                            <h4>✓ The Solution: Build Unconditional Self-Worth</h4>
+                            <p>"I am valuable beyond my achievements."</p>
+                        </div>
+                        
+                        <div class="why-matters">
+                            <h4>💡 Why This Works:</h4>
+                            <p><strong>What defines you?</strong> You are made up of so much more: your values, relationships, friendships, interests, strengths and weaknesses. You are complex and constantly evolving. When you recognize this, a single setback or achievement doesn't have the power to define your entire worth.</p>
+                        </div>
+                        
+                        <div class="student-example" style="cursor: pointer; position: relative;" onclick="toggleStory(5)">
+                            <h4>📚 Real Student Example: <span style="color: #10b981;">Click to see the full story →</span></h4>
+                            <div id="story-preview-5">
+                                <p>"I used to think my degree classification was everything. When I got a 2:2 on my dissertation, I was devastated..."</p>
+                            </div>
+                            <div id="story-full-5" style="display: none;">
+                                <p style="margin-bottom: 15px;"><strong>The Problem:</strong> "I used to think my degree classification was everything. When I got a 2:2 on my dissertation, I was devastated."</p>
+                                <div style="text-align: center; font-size: 2em; color: #10b981; margin: 10px 0;">↓</div>
+                                <p><strong>The Realization:</strong> "But my tutor reminded me: I'm also a great friend, a caring volunteer at the animal shelter, someone who loves photography, and a supportive sibling. My grade is just one small part of who I am."</p>
+                            </div>
+                        </div>
+                        
+                        <div class="student-example" style="cursor: pointer; position: relative;" onclick="toggleStory(6)">
+                            <h4>📚 Real Student Example: <span style="color: #10b981;">Click to see the full story →</span></h4>
+                            <div id="story-preview-6">
+                                <p>"When I didn't get the internship I wanted, I felt worthless..."</p>
+                            </div>
+                            <div id="story-full-6" style="display: none;">
+                                <p style="margin-bottom: 15px;"><strong>The Problem:</strong> "When I didn't get the internship I wanted, I felt worthless."</p>
+                                <div style="text-align: center; font-size: 2em; color: #10b981; margin: 10px 0;">↓</div>
+                                <p><strong>What Helped:</strong> "Then I did the Big 'I' Little 'i' exercise and filled it with things like: i am creative, i volunteer weekly, i'm learning Spanish, i'm a loyal friend, i love cooking, i'm patient with my younger cousins. Suddenly I could see that one rejection didn't erase all these other valuable parts of me. It gave me perspective."</p>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-box">
+                            <h4>🎨 Interactive Exercise: The Big 'I', Little 'i'</h4>
+                            <p><strong>This powerful exercise helps you visualize your multifaceted identity.</strong></p>
+                            
+                            <div class="big-i-container">
+                                <div class="big-i-visual">
+                                    <p style="font-size: 3em; color: #3b82f6; font-weight: bold; margin-bottom: 0;">I</p>
+                                    <div class="little-i-list">
+                                        <p style="font-size: 0.8em; margin-top: 10px;">This is YOU - made up of many 'i's:</p>
+                                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                                            <li>• i am a student</li>
+                                            <li>• i am a friend</li>
+                                            <li>• i am a daughter/son</li>
+                                            <li>• i love music</li>
+                                            <li>• i am learning and growing</li>
+                                            <li>• i am kind</li>
+                                            <li>...and so many more!</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div class="exercise-steps">
+                                        <p><strong>How to do this exercise:</strong></p>
+                                        <ol>
+                                            <li>Draw a large letter 'I' on paper—that's you</li>
+                                            <li>Fill it with many small 'i's representing all aspects of who you are</li>
+                                            <li>Each 'i' represents something about you: roles (friend, student), interests (gamer, reader), qualities (kind, funny), activities you enjoy, relationships you have</li>
+                                            <li>When one thing feels overwhelming, look at your 'I' and remember all the other 'i's that make you who you are</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="try-now">
+                            <h4>✨ Try This Now (5 minutes):</h4>
+                            <p>Take a piece of paper and actually draw your Big 'I'! Fill it with at least 10 little 'i's. Try to include:</p>
+                            <ul>
+                                <li>Your roles (student, sibling, friend, employee...)</li>
+                                <li>Your interests (hobbies, passions, things you enjoy)</li>
+                                <li>Your qualities (kind, creative, determined, funny...)</li>
+                                <li>Your relationships (supportive friend, caring family member...)</li>
+                            </ul>
+                            <p><strong>Keep this somewhere visible!</strong> When you're stressed about one aspect, look at it to remember how much more you are than any single thing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Reminders Summary -->
+            <div class="key-reminders">
+                <h3>🌈 Key Reminders for Your Wellbeing</h3>
+                
+                <div class="reminder-item">
+                    <span class="checkmark">✓</span>
+                    <p><strong>Replace 'I must' with 'I would really like to'</strong> — it removes pressure while maintaining motivation</p>
+                </div>
+                
+                <div class="reminder-item">
+                    <span class="checkmark">✓</span>
+                    <p><strong>Accept that failure is part of life</strong> — it doesn't define you, and won't stop you trying again</p>
+                </div>
+                
+                <div class="reminder-item">
+                    <span class="checkmark">✓</span>
+                    <p><strong>Remember you are valuable beyond any single achievement</strong> — you are complex and multifaceted</p>
+                </div>
+                
+                <div class="reminder-item">
+                    <span class="checkmark">✓</span>
+                    <p><strong>When something feels huge, step back</strong> — remember all the aspects that make you who you are</p>
+                </div>
+            </div>
+            
+            <div style="background: #f8f9ff; padding: 30px; margin: 30px; border-radius: 15px; border-left: 5px solid #667eea;">
+                <h3 style="color: #667eea; margin-bottom: 15px; font-size: 1.3em;">📖 Theoretical Foundation</h3>
+                <p style="color: #4a5568; line-height: 1.6;">The principles and strategies presented in this guide are inspired by and taken from <strong>Rational Emotive Behaviour Therapy (REBT)</strong>, developed by psychologist Albert Ellis. REBT is an evidence-based approach that recognizes the powerful connection between our thoughts, emotions, and behaviors. By changing unhelpful thinking patterns, we can improve our emotional wellbeing and achieve our goals more effectively.</p>
+                <p style="color: #4a5568; line-height: 1.6; margin-top: 15px;">REBT has been extensively researched and shown to be effective for managing stress, anxiety, and building resilience—particularly relevant for student life!</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Your thoughts can either support or hinder you. The good news is that you have the power to change unhelpful attitudes into helpful ones. Be kind to yourself as you grow and learn.</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">💜 Remember: If you're struggling with your wellbeing, please reach out to your university's student support services. You don't have to do this alone.</p>
+        </div>
+    </div>
+    
+    <script>
+        function toggleSection(sectionNum) {
+            const content = document.getElementById('content' + sectionNum);
+            const icon = document.getElementById('icon' + sectionNum);
+            
+            content.classList.toggle('active');
+            
+            if (content.classList.contains('active')) {
+                icon.textContent = '−';
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.textContent = '+';
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        // Quiz functionality
+        let quizRecommendation = '';
+        
+        function calculateQuizResult() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+            
+            if (!q1 || !q2 || !q3) {
+                alert('Please answer all 3 questions before continuing!');
+                return;
+            }
+            
+            // Count votes for each category
+            const scores = { flexible: 0, failure: 0, worth: 0 };
+            scores[q1.value]++;
+            scores[q2.value]++;
+            scores[q3.value]++;
+            
+            // Find the highest score
+            let maxScore = 0;
+            let topCategory = '';
+            for (let category in scores) {
+                if (scores[category] > maxScore) {
+                    maxScore = scores[category];
+                    topCategory = category;
+                }
+            }
+            
+            quizRecommendation = topCategory;
+            
+            // Display result
+            const resultText = document.getElementById('result-text');
+            const scrollButton = document.getElementById('scroll-button');
+            
+            if (topCategory === 'flexible') {
+                resultText.innerHTML = '<strong>You might benefit most from: Flexible Thinking</strong><br><br>Your responses suggest you often put rigid "must" pressure on yourself. Learning to replace "I must" with "I would like to" could significantly reduce your anxiety and actually improve your performance. Click below to jump to that strategy!';
+                scrollButton.setAttribute('data-section', '1');
+            } else if (topCategory === 'failure') {
+                resultText.innerHTML = '<strong>You might benefit most from: Accepting Failure</strong><br><br>Your responses suggest you might see setbacks as catastrophic or as proof of inadequacy. Learning to accept failure as a normal part of life—not a reflection of your worth—could help you bounce back faster and take healthy risks. Click below to jump to that strategy!';
+                scrollButton.setAttribute('data-section', '2');
+            } else {
+                resultText.innerHTML = '<strong>You might benefit most from: Building Self-Worth</strong><br><br>Your responses suggest your self-worth might be too closely tied to achievements. The Big "I" Little "i" exercise can help you see yourself as multifaceted—valuable beyond any single outcome. Click below to jump to that strategy!';
+                scrollButton.setAttribute('data-section', '3');
+            }
+            
+            document.getElementById('quiz-questions').style.display = 'none';
+            document.getElementById('quiz-result').style.display = 'block';
+        }
+        
+        function scrollToSection() {
+            const section = document.getElementById('scroll-button').getAttribute('data-section');
+            toggleSection(parseInt(section));
+            document.getElementById('content' + section).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        function resetQuiz() {
+            document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+            document.getElementById('quiz-questions').style.display = 'block';
+            document.getElementById('quiz-result').style.display = 'none';
+        }
+        
+        // Interactive story toggle functionality
+        function toggleStory(storyNum) {
+            const preview = document.getElementById('story-preview-' + storyNum);
+            const full = document.getElementById('story-full-' + storyNum);
+            
+            if (full.style.display === 'none') {
+                preview.style.display = 'none';
+                full.style.display = 'block';
+            } else {
+                preview.style.display = 'block';
+                full.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
