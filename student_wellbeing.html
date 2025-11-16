@@ -924,51 +924,6 @@
                 full.style.display = 'none';
             }
         }
-        
-        // Update slider label based on value
-        function updateSliderLabel(value) {
-            const labels = {
-                '1': 'Very unhelpful',
-                '2': 'Unhelpful',
-                '3': 'Somewhat unhelpful',
-                '4': 'Neither helpful nor unhelpful',
-                '5': 'Somewhat helpful',
-                '6': 'Helpful',
-                '7': 'Very helpful'
-            };
-            document.getElementById('sliderValue').textContent = 'Selected: ' + labels[value];
-        }
-        
-        // Feedback form handling
-        function handleFeedbackSubmit(event) {
-            event.preventDefault();
-            
-            const form = document.getElementById('feedbackForm');
-            const successMessage = document.getElementById('feedbackSuccess');
-            const rating = document.getElementById('helpfulnessSlider').value;
-            const feedback = document.getElementById('feedbackText').value;
-            
-            // Here you would normally send the data to a server
-            // For now, we'll just show a success message
-            console.log('Feedback submitted:', { rating, feedback });
-            
-            // Show success message
-            successMessage.style.display = 'block';
-            
-            // Reset form
-            form.reset();
-            
-            // Reset slider label
-            updateSliderLabel('4');
-            
-            // Scroll to success message
-            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
-        }
     </script>
 </body>
 </html>
